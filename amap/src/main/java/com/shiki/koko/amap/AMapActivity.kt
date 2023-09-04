@@ -71,7 +71,7 @@ class AMapActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
-        binding.btnLocationBlue.setOnClickListener {
+        binding.btnLocation.setOnClickListener {
             val intent = Intent(this, AMapShowActivity::class.java).apply {
                 putExtra("Location", "Location")
             }
