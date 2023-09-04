@@ -1,11 +1,15 @@
 package com.shiki.koko.amap
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.amap.api.location.AMapLocationClient
+import com.amap.api.location.AMapLocationClientOption
 import com.amap.api.location.AMapLocationListener
 import com.amap.api.maps.AMap
 import com.shiki.koko.amap.databinding.ActivityAmapShowBinding
+import com.shiki.koko.amap.location.getLocationOption
+import com.shiki.koko.amap.location.printLocationInfo
 import com.shiki.koko.base.toast
 
 class AMapShowActivity : AppCompatActivity() {
@@ -14,9 +18,11 @@ class AMapShowActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAmapShowBinding
     private lateinit var aMap: AMap
 
-    private lateinit var locationChangeListener: AMap.OnMyLocationChangeListener
-    private lateinit var aMapLocationListener: AMapLocationListener
+    //定位客户端
     private lateinit var aMapLocationClient: AMapLocationClient
+
+    //定位结果监听
+    private lateinit var aMapLocationListener: AMapLocationListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,17 +37,6 @@ class AMapShowActivity : AppCompatActivity() {
     }
 
     private fun initListener() {
-        aMapLocationClient = AMapLocationClient(this.application)
-
-        aMapLocationListener = AMapLocationListener {
-
-        }
-
-        aMapLocationClient.setLocationListener(aMapLocationListener)
-
-        locationChangeListener = AMap.OnMyLocationChangeListener { location ->
-            toast("location ${location.accuracy} ${location.altitude} ${location.longitude}")
-        }
 
 
     }
@@ -58,10 +53,11 @@ class AMapShowActivity : AppCompatActivity() {
         toast(bundle)
         when (bundle) {
             "Location" -> {
-                locationBlue(aMap)
+                location()
             }
         }
     }
+
 
     override fun onPause() {
         super.onPause()
@@ -72,6 +68,30 @@ class AMapShowActivity : AppCompatActivity() {
         super.onSaveInstanceState(outState)
         //在activity执行onSaveInstanceState时执行mMapView.onSaveInstanceState (outState)，保存地图当前的状态
         binding.aMap.onSaveInstanceState(outState)
+    }
+
+
+    //定位
+    private fun location() {
+
+        val result = kotlin.runCatching {
+            aMapLocationClient = AMapLocationClient(this.application)
+            //设置定位监听
+            aMapLocationListener = AMapLocationListener {
+                binding.tvLog.visibility = View.VISIBLE
+                binding.tvLog.text = printLocationInfo(it)
+            }
+            //设置定位参数
+            val option = getLocationOption()
+            aMapLocationClient.setLocationOption(option)
+
+            //启动定位
+            aMapLocationClient.startLocation()
+        }
+        result.onFailure {
+            toast("定位异常")
+        }
+
     }
 
 }
