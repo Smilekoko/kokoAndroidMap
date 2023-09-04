@@ -81,6 +81,8 @@ class AMapShowActivity : AppCompatActivity() {
                 binding.tvLog.visibility = View.VISIBLE
                 binding.tvLog.text = printLocationInfo(it)
             }
+            aMapLocationClient.setLocationListener(aMapLocationListener)
+
             //设置定位参数
             val option = getLocationOption()
             aMapLocationClient.setLocationOption(option)

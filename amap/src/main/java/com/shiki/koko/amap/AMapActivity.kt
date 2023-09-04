@@ -92,7 +92,8 @@ class AMapActivity : AppCompatActivity() {
             Manifest.permission.CHANGE_WIFI_STATE,
 //            Manifest.permission.WRITE_SETTINGS,//无法获取
             Manifest.permission.READ_PHONE_STATE,
-            Manifest.permission.ACCESS_COARSE_LOCATION
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION
         )
     }
 
