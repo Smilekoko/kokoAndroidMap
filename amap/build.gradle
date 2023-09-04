@@ -50,12 +50,8 @@ dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    //3D地图so及jar
+    //3D地图so及jar( 3D地图SDK 搜索SDK 定位SDK)
     implementation 'com.amap.api:3dmap:latest.integration'
-    //定位功能
-//    implementation 'com.amap.api:location:latest.integration'
-    //搜索功能
-//    implementation 'com.amap.api:search:latest.integration'
 
     implementation project(path: ':base-lib')
 }

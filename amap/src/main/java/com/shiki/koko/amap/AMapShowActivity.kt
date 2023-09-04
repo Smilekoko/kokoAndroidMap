@@ -1,10 +1,10 @@
 package com.shiki.koko.amap
 
-import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.amap.api.location.AMapLocationClient
+import com.amap.api.location.AMapLocationListener
 import com.amap.api.maps.AMap
-import com.amap.api.maps.MapView
 import com.shiki.koko.amap.databinding.ActivityAmapShowBinding
 import com.shiki.koko.base.toast
 
@@ -13,7 +13,10 @@ class AMapShowActivity : AppCompatActivity() {
     private val TAG = "AMapShowActivity"
     private lateinit var binding: ActivityAmapShowBinding
     private lateinit var aMap: AMap
+
     private lateinit var locationChangeListener: AMap.OnMyLocationChangeListener
+    private lateinit var aMapLocationListener: AMapLocationListener
+    private lateinit var aMapLocationClient: AMapLocationClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,10 +26,24 @@ class AMapShowActivity : AppCompatActivity() {
         binding.aMap.onCreate(savedInstanceState)
         //地图对象
         aMap = binding.aMap.map
-        //定位改变监听
+
+        initListener()
+    }
+
+    private fun initListener() {
+        aMapLocationClient = AMapLocationClient(this.application)
+
+        aMapLocationListener = AMapLocationListener {
+
+        }
+
+        aMapLocationClient.setLocationListener(aMapLocationListener)
+
         locationChangeListener = AMap.OnMyLocationChangeListener { location ->
             toast("location ${location.accuracy} ${location.altitude} ${location.longitude}")
         }
+
+
     }
 
     override fun onDestroy() {
