@@ -6,9 +6,8 @@ import com.amap.api.maps.AMap
 import com.amap.api.maps.model.CustomMapStyleOptions
 import com.shiki.koko.amap.databinding.ActivityAmapShowBinding
 import com.shiki.koko.amap.mapstyle.assetsMapStyle
-import java.io.IOException
-import java.io.InputStream
 
+//显示地图
 class AMapShowActivity : AppCompatActivity() {
 
     private val TAG = "AMapShowActivity"

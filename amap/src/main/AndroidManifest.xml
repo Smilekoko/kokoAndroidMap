@@ -23,6 +23,9 @@
 
     <application>
         <activity
+            android:name=".IndoorMapActivity"
+            android:exported="false" />
+        <activity
             android:name=".LocationActivity"
             android:exported="false" />
 
