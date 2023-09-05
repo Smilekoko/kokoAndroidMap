@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="8dp"
+        android:layout_marginVertical="4dp"
         android:text="隐私政策"
         tools:ignore="HardcodedText" />
 
@@ -23,18 +23,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="8dp"
+        android:layout_marginVertical="4dp"
         android:text="地图权限"
         tools:ignore="HardcodedText" />
-
 
     <Button
         android:id="@+id/btn_show_map"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="8dp"
-        android:text="展示地图"
+        android:layout_marginVertical="4dp"
+        android:text="显示地图"
         tools:ignore="HardcodedText" />
 
     <Button
@@ -42,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="8dp"
+        android:layout_marginVertical="4dp"
         android:text="获取定位"
         tools:ignore="HardcodedText" />
 

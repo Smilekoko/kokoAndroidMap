@@ -19,6 +19,11 @@ android {
             abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
         }
     }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
 
     buildTypes {
         release {
@@ -48,10 +53,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    //3D地图so及jar( 3D地图SDK 搜索SDK 定位SDK)
-    implementation 'com.amap.api:3dmap:latest.integration'
+    api fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation project(path: ':base-lib')
 }

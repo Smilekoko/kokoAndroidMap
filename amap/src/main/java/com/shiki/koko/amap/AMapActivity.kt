@@ -48,12 +48,12 @@ class AMapActivity : AppCompatActivity() {
 //                    toast("已设置额外储存管理")
                 }
             } else {
-//                permissionLauncher.permissionProcess(this,
-//                    EXTERNAL_STORAGE_PERMISSION,
-//                    agreeAction = { toast("权限同意") },
-//                    denyAction = { toast("权限拒绝") },
-//                    denyNotAskAction = { toast("权限拒绝且不再询问") }
-//                )
+                permissionLauncher.permissionProcess(this,
+                    EXTERNAL_STORAGE_PERMISSION,
+                    agreeAction = { toast("权限同意") },
+                    denyAction = { toast("权限拒绝") },
+                    denyNotAskAction = { toast("权限拒绝且不再询问") }
+                )
             }
 
             permissionLauncher.permissionProcess(this, PERMISSIONS,
@@ -67,13 +67,13 @@ class AMapActivity : AppCompatActivity() {
 
         binding.btnShowMap.setOnClickListener {
             val intent = Intent(this, AMapShowActivity::class.java).apply {
-//                putExtra("Location", "Location")
+//                putExtra("key", "MAP_TYPE_NORMAL")
             }
             startActivity(intent)
         }
         binding.btnLocation.setOnClickListener {
             val intent = Intent(this, AMapShowActivity::class.java).apply {
-                putExtra("Location", "Location")
+                putExtra("key", "Location")
             }
             startActivity(intent)
         }

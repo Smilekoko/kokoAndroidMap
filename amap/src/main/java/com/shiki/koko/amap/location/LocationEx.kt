@@ -18,14 +18,14 @@ fun getLocationOption(): AMapLocationClientOption {
 //    locationOption.locationMode = AMapLocationMode.Battery_Saving //低功耗模式
 //    locationOption.locationMode = AMapLocationMode.Device_Sensors //传感器模式
     mOption.locationMode = AMapLocationMode.Hight_Accuracy //高精度模式
-    mOption.isGpsFirst = false //可选，设置是否gps优先，只在高精度模式下有效。默认关闭
+    mOption.isGpsFirst = true //可选，设置是否gps优先，只在高精度模式下有效。默认关闭
     mOption.httpTimeOut = 30000 //可选，设置网络请求超时时间。默认为30秒。在仅设备模式下无效
     mOption.interval = 2000 //可选，设置定位间隔。默认为2秒
     mOption.isNeedAddress = true //可选，设置是否返回逆地理地址信息。默认是true
     mOption.isOnceLocation = false //可选，设置是否单次定位。默认是false
     mOption.isOnceLocationLatest = false //可选，设置是否等待wifi刷新，默认为false.如果设置为true,会自动变为单次定位，持续定位时不要使用
     AMapLocationClientOption.setLocationProtocol(AMapLocationProtocol.HTTP) //可选， 设置网络请求的协议。可选HTTP或者HTTPS。默认为HTTP
-    mOption.isSensorEnable = false //可选，设置是否使用传感器。默认是false
+    mOption.isSensorEnable = true //可选，设置是否使用传感器。默认是false
     mOption.isWifiScan = true //可选，设置是否开启wifi扫描。默认为true，如果设置为false会同时停止主动刷新，停止以后完全依赖于系统刷新，定位位置可能存在误差
     mOption.isLocationCacheEnable = true //可选，设置是否使用缓存定位，默认为true
     mOption.geoLanguage =
@@ -39,7 +39,7 @@ fun printLocationInfo(location: AMapLocation?): String {
         val sb = StringBuffer()
         //errCode等于0代表定位成功，其他的为定位失败，具体的可以参照官网定位错误码说明
         if (location.errorCode == 0) {
-            Log.e("AMapLocation",location.toString())
+            Log.e("AMapLocation", location.toString())
             sb.append("定位成功\n")
             sb.append("定位类型:${location.locationType}\n")
             sb.append("经度:${location.longitude}\n")

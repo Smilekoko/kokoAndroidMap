@@ -1,16 +1,13 @@
 package com.shiki.koko.amap
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.amap.api.location.AMapLocationClient
-import com.amap.api.location.AMapLocationClientOption
-import com.amap.api.location.AMapLocationListener
 import com.amap.api.maps.AMap
+import com.amap.api.maps.model.CustomMapStyleOptions
 import com.shiki.koko.amap.databinding.ActivityAmapShowBinding
-import com.shiki.koko.amap.location.getLocationOption
-import com.shiki.koko.amap.location.printLocationInfo
-import com.shiki.koko.base.toast
+import com.shiki.koko.amap.mapstyle.assetsMapStyle
+import java.io.IOException
+import java.io.InputStream
 
 class AMapShowActivity : AppCompatActivity() {
 
@@ -18,11 +15,8 @@ class AMapShowActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAmapShowBinding
     private lateinit var aMap: AMap
 
-    //定位客户端
-    private lateinit var aMapLocationClient: AMapLocationClient
-
-    //定位结果监听
-    private lateinit var aMapLocationListener: AMapLocationListener
+    //地图样式选项
+    private val mapStyleOptions = CustomMapStyleOptions()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,12 +27,33 @@ class AMapShowActivity : AppCompatActivity() {
         //地图对象
         aMap = binding.aMap.map
 
-        initListener()
+        binding.btnBasicMap.setOnClickListener {
+            aMap.mapType = AMap.MAP_TYPE_NORMAL // 矢量地图模式
+        }
+        binding.btnSatelliteMap.setOnClickListener {
+            aMap.mapType = AMap.MAP_TYPE_SATELLITE // 卫星地图模式
+        }
+        binding.btnNightMap.setOnClickListener {
+            aMap.mapType = AMap.MAP_TYPE_NIGHT //夜景地图模式
+        }
+        binding.btnNaviMap.setOnClickListener {
+            aMap.mapType = AMap.MAP_TYPE_NAVI //导航地图模式
+        }
+
+        binding.checkBox.setOnCheckedChangeListener { buttonView, isChecked ->
+            // 设置自定义样式
+            mapStyleOptions.isEnable = isChecked
+            // mapStyleOptions.setStyleId("your id");
+            aMap.setCustomMapStyle(mapStyleOptions)
+        }
+
+        initCustomMapStyle()
     }
 
-    private fun initListener() {
-
-
+    //初始化自定义样式
+    private fun initCustomMapStyle() {
+        // 设置自定义样式
+        mapStyleOptions.styleData = assetsMapStyle("style.data")
     }
 
     override fun onDestroy() {
@@ -49,13 +64,6 @@ class AMapShowActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         binding.aMap.onResume()
-        val bundle = intent.getStringExtra("Location") ?: "null"
-        toast(bundle)
-        when (bundle) {
-            "Location" -> {
-                location()
-            }
-        }
     }
 
 
@@ -70,30 +78,5 @@ class AMapShowActivity : AppCompatActivity() {
         binding.aMap.onSaveInstanceState(outState)
     }
 
-
-    //定位
-    private fun location() {
-
-        val result = kotlin.runCatching {
-            aMapLocationClient = AMapLocationClient(this.application)
-            //设置定位监听
-            aMapLocationListener = AMapLocationListener {
-                binding.tvLog.visibility = View.VISIBLE
-                binding.tvLog.text = printLocationInfo(it)
-            }
-            aMapLocationClient.setLocationListener(aMapLocationListener)
-
-            //设置定位参数
-            val option = getLocationOption()
-            aMapLocationClient.setLocationOption(option)
-
-            //启动定位
-            aMapLocationClient.startLocation()
-        }
-        result.onFailure {
-            toast("定位异常")
-        }
-
-    }
 
 }
