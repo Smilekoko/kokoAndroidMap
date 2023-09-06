@@ -81,6 +81,12 @@ class AMapActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
+        binding.btnIndoorMap.setOnClickListener {
+            val intent = Intent(this, IndoorMapActivity::class.java).apply {
+//                putExtra("key", "MAP_TYPE_NORMAL")
+            }
+            startActivity(intent)
+        }
     }
 
     override fun onResume() {

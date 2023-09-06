@@ -24,7 +24,8 @@ import android.widget.TextView
 import com.shiki.koko.amap.R
 
 /**
- * 楼层控制控件
+ * 楼层控制控件,sdk自带控件
+ * todo 可以看看怎么实现的,目前暂停
  */
 
 class IndoorFloorSwitchView : ScrollView {
