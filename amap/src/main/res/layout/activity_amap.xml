@@ -54,5 +54,14 @@
         android:text="室内地图"
         tools:ignore="HardcodedText" />
 
+    <Button
+        android:id="@+id/btn_gesture_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="4dp"
+        android:text="地图手势"
+        tools:ignore="HardcodedText" />
+
 
 </LinearLayout>

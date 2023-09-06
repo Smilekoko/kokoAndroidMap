@@ -16,6 +16,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
     signingConfigs {
         debug {
             storeFile file("../kokoAndroidMap.jks")
@@ -23,7 +24,7 @@ android {
             keyAlias 'koko'
             keyPassword 'wanglei1796'
         }
-        realse {
+        release {
             storeFile file("../kokoAndroidMap.jks")
             storePassword 'wanglei1796'
             keyAlias 'koko'
@@ -40,9 +41,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.realse
+            signingConfig signingConfigs.release
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

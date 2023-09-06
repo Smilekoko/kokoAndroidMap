@@ -87,6 +87,13 @@ class AMapActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
+        binding.btnGestureMap.setOnClickListener {
+            val intent = Intent(this, UiSettingsActivity::class.java).apply {
+                putExtra("key", "Gesture")
+            }
+            startActivity(intent)
+        }
+
     }
 
     override fun onResume() {
