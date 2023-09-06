@@ -9,6 +9,7 @@ import com.shiki.koko.amap.databinding.ActivityLocationBinding
 import com.shiki.koko.amap.location.getLocationOption
 import com.shiki.koko.amap.location.printLocationInfo
 import com.shiki.koko.base.toast
+import java.io.IOException
 
 
 //定位功能
@@ -35,7 +36,6 @@ class LocationActivity : AppCompatActivity() {
 
     //定位
     private fun location() {
-
         val result = kotlin.runCatching {
             aMapLocationClient = AMapLocationClient(this.application)
             //设置定位监听

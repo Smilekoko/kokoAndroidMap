@@ -5,6 +5,7 @@ import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.os.Build
 import com.amap.api.location.AMapLocationClient
+import com.shiki.koko.base.initCrashLogLocally
 import com.shiki.koko.base.sHA1
 
 
@@ -12,6 +13,7 @@ class MapApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        initCrashLogLocally()
         setAmapApiKey()
 
         //签名包含多个SHA1的,需要用对

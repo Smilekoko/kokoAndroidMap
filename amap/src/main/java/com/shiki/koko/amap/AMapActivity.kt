@@ -7,6 +7,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
+import android.util.Log
 import com.shiki.koko.amap.databinding.ActivityAmapBinding
 import com.shiki.koko.base.IntentLauncher
 import com.shiki.koko.base.PermissionLauncher
@@ -15,12 +16,15 @@ import com.shiki.koko.base.settingManageExternalStorage
 import com.shiki.koko.base.toast
 
 class AMapActivity : AppCompatActivity() {
+
+    private val TAG = "AMapActivity"
     private lateinit var binding: ActivityAmapBinding
     private lateinit var permissionLauncher: PermissionLauncher
     private lateinit var intentLauncher: IntentLauncher
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.e(TAG, "onCreate")
         binding = ActivityAmapBinding.inflate(layoutInflater)
         setContentView(binding.root)
         permissionLauncher = PermissionLauncher(this)
@@ -79,9 +83,22 @@ class AMapActivity : AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        Log.e(TAG, "onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.e(TAG, "onPause")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.e(TAG, "onDestroy")
+    }
+
     companion object {
-
-
         val EXTERNAL_STORAGE_PERMISSION = arrayOf(
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
