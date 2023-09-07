@@ -36,6 +36,7 @@ class LocationActivity : AppCompatActivity() {
 
     //定位
     private fun location() {
+        throw IOException()
         val result = kotlin.runCatching {
             aMapLocationClient = AMapLocationClient(this.application)
             //设置定位监听

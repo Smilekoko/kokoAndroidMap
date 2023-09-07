@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit
 
 //https://blog.csdn.net/wangdong5678999/article/details/81159690
 //SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.getDefault()).format(Date())
+//https://juejin.cn/post/7269013062677823528
 
 private val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA)
 private val simpleDateFormatS = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.CHINA)
