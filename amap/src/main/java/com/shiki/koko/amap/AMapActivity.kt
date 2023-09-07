@@ -97,6 +97,10 @@ class AMapActivity : AppCompatActivity() {
             val intent = Intent(this, PoiActivity::class.java).apply {}
             startActivity(intent)
         }
+        binding.btnCameraMap.setOnClickListener {
+            val intent = Intent(this, CameraActivity::class.java).apply {}
+            startActivity(intent)
+        }
 
     }
 
