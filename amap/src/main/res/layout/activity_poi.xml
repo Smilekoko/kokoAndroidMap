@@ -4,17 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LocationActivity">
+    tools:context=".PoiActivity">
 
     <com.amap.api.maps.MapView
         android:id="@+id/aMap"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-    <TextView
-        android:id="@+id/tv_log"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="30dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -93,6 +93,10 @@ class AMapActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
+        binding.btnPoiMap.setOnClickListener {
+            val intent = Intent(this, PoiActivity::class.java).apply {}
+            startActivity(intent)
+        }
 
     }
 

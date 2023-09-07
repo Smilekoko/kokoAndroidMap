@@ -29,14 +29,13 @@ class LocationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLocationBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        binding.aMap.onCreate(savedInstanceState)
         location()
     }
 
 
     //定位
     private fun location() {
-        throw IOException()
         val result = kotlin.runCatching {
             aMapLocationClient = AMapLocationClient(this.application)
             //设置定位监听

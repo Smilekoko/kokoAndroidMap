@@ -64,4 +64,14 @@
         tools:ignore="HardcodedText" />
 
 
+    <Button
+        android:id="@+id/btn_poi_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="4dp"
+        android:text="地图Poi点"
+        tools:ignore="HardcodedText" />
+
+
 </LinearLayout>
