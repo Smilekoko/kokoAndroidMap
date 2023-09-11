@@ -68,7 +68,6 @@ class AMapActivity : AppCompatActivity() {
                 denyNotAskAction = { toast("权限拒绝且不再询问") })
         }
         binding.btnPermission.callOnClick()
-
         binding.btnShowMap.setOnClickListener {
             val intent = Intent(this, AMapShowActivity::class.java).apply {
 //                putExtra("key", "MAP_TYPE_NORMAL")
@@ -101,7 +100,6 @@ class AMapActivity : AppCompatActivity() {
             val intent = Intent(this, CameraActivity::class.java).apply {}
             startActivity(intent)
         }
-
     }
 
     override fun onResume() {
